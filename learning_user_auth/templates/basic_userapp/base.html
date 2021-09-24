@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <div class="container">
+        <ul class="nav navbar-nav">
+          <li><a class = "navbar-brand" href="{% url 'index' %}">DJANGO HOME</a></li>
+          <li class="nav-item nav-link active"><a class="nav-link" href="{% url 'admin:index' %}">ADMIN</a></li>
+          <li class="nav-item nav-link active"><a class="nav-link" href="{% url 'basic_userapp:register' %}">REGISTER</a></li>
+
+
+          {% if user.is_authenticated %}
+            <li class="nav-item nav-link active"><a class="nav-link" href="{% url 'logout' %}">LOGOUT</a></li>
+          {% else %}
+            <li class="nav-item nav-link active"><a class="nav-link" href="{% url 'basic_userapp:user_login' %}">LOGIN</a></li>
+          {% endif %}
+
+
+
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      {% block body_block %}
+      {% endblock%}
+    </div>
+
+  </body>
+</html>
+<!-- this page has navbar with links and urls  -->

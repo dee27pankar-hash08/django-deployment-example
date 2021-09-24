@@ -1,0 +1,22 @@
+{% extends "basic_userapp/base.html"%}
+{% load static %}
+
+{% block body_block %}
+
+
+<div class="jumbotron">
+  {% if registered %}
+    <h1>Thankyou For registering </h1>
+  {% else %}
+    <h1>Register Here!</h1>
+    <h3>Fill out The Form></h3>
+    <form  method="POST" enctype="multipart/form-data">#enctype is to facilitate image uploading
+      {% csrf_token %}
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      <input type="submit" name="" value="Register">
+    </form>
+    {% endif %}
+</div>
+ {% endblock %}
+<!-- #this page has the tokens user forms and profile forms from forms.py -->
